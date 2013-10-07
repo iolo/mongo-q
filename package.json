@@ -1,0 +1,30 @@
+{
+  "name": "mongo-q",
+  "version": "0.0.1",
+  "description": "kriskowal's Q support for mongodb",
+  "author": "Dongsu Jang <iolothebard@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:iolo/mongo-q.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": "~0.10"
+  },
+  "dependencies": {
+    "lodash": "~2.2.0",
+    "q": "~0.9.7",
+    "debug": "~0.7.2",
+    "mongodb": "~1.3.19"
+  },
+  "optionalDependencies": {
+  },
+  "devDependencies": {
+    "nodeunit": "latest",
+    "pow-mongodb-fixtures": "latest"
+  },
+  "directories": {
+    "lib": "./libs"
+  },
+  "main": "./libs/mongo_q"
+}

@@ -1,0 +1,6 @@
+node_modules
+build
+scripts/env.sh
+.DS_Store
+.idea
+*.iml
