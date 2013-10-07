@@ -3,7 +3,7 @@ mongo-q
 
 [kriskowal's Q](http://documentup.com/kriskowal/q/) support for [mongodb](https://github.com/mongodb/node-mongodb-native/).
 
-for [mongoose](http://mongoosejs.com), see [mongoose-q](http://github.com/iolo/monogoose-q).
+for [mongoose](http://mongoosejs.com), see [mongoose-q](http://github.com/iolo/mongoose-q).
 
 usage
 -----
