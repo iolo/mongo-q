@@ -107,11 +107,13 @@ var
  * @param {*} [spread=false] use spread for multi-results
  */
 function qualify(obj, funcNames, funcNameMapper, spread) {
+  console.log('wrap obj:', obj);
   funcNames.forEach(function (funcName) {
     if (typeof(obj[funcName]) !== 'function') {
       console.warn('***skip*** function not found:', funcName);
       return;
     }
+    console.log('wrap function:', funcName);
     obj[funcNameMapper(funcName)] = function () {
       var d = Q.defer();
       var args = apslice.call(arguments);

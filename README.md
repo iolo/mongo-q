@@ -12,7 +12,7 @@ usage
 
 ```javascript
 var mongodb = require('mongo-q')(require('mongodb'));
-// verbose way: mongooseQ is unused
+// verbose way: mongoQ is unused
 var mongodb = require('mongodb'),
     mongoQ = require('mongo-q')(mongodb)
 // shortest way: mongodb will be loaded by mongo-q
@@ -31,6 +31,8 @@ mongodb.MongoClient.connectQ(....)
   })
   .then(function (cursor) {
     return cursor.toArrayQ();
+    // workaround for mongodb >= 1.9.20
+    //return Q.nfcall(cursor.toArray);
   })
   .then(function (result) {
     ...
@@ -48,6 +50,8 @@ mongodb.MongoClient.connectQ(....)
   })
   .then(function (coll) {
     return coll.find().toArrayQ(); // <----- HERE!
+    // workaround for mongodb >= 1.9.20
+    //return Q.nfcall(coll.find().toArray);
   })
   .then(function (result) {
     ...
