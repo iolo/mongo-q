@@ -79,6 +79,7 @@ var
   ],
   CURSOR_METHODS = [
     'toArray',
+    'each',
     'count',
     'sort',
     'limit',
