@@ -57,16 +57,20 @@ module.exports = {
   test_find_toArray: function (test) {
     db.qCollection('users')
       .then(function (coll) {
+        return coll.qFind();
+      })
+      .then(function (cursor) {
         // FIXME: workaround for issue #1
         // since the latest mongodb driver(>=1.9.20)
         // ```collection.find()``` returns ```Scope``` instance not ```Cursor``` instance.
         // and the Scope can't be mixed in because it is not prototype based. :'(
-        //return coll.find().qToArray();
-        return Q.nfcall(coll.find().toArray);
+        return cursor.qToArray();
+        //return Q.nfcall(cursor.toArray);
       })
       .then(function (result) {
         console.log('***test_find_toArray ok', arguments);
         test.ok(result);
+        test.equal(result.length, 4);
       })
       .fail(test.ifError)
       .done(test.done);
@@ -76,12 +80,10 @@ module.exports = {
       .then(function (coll) {
         return coll.qFind();
       })
-      .then(function (result) {
-        test.ok(result);
+      .then(function (cursor) {
         // FIXME: workaround for issue #1
-        //test.ok(result instanceof mongodb.Cursor);
-        //return result.qNextObject();
-        return Q.nfcall(result.nextObject);
+        return cursor.qNextObject();
+        //return Q.nfcall(cursor.nextObject);
       })
       .then(function (result) {
         console.log('***test_find_nextObject ok', arguments);
@@ -90,4 +92,26 @@ module.exports = {
       .fail(test.ifError)
       .done(test.done);
   },
+  test_find_each: function (test) {
+    db.qCollection('users')
+      .then(function (coll) {
+        return coll.qFind();
+      })
+      .then(function (cursor) {
+        var count = 0;
+        // FIXME: workaround for issue #1
+        cursor.qEach()
+        //Q.nfcall(cursor.each)
+            .then(function (item) {
+                console.log('***test_find_cursor_each:', arguments);
+                if (!item) {
+                    test.equal(count, 4);
+                    return test.done();
+                }
+                count += 1;
+            });
+      })
+      .fail(test.ifError)
+      .done(test.done);
+  }
 };
