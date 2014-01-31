@@ -1,6 +1,6 @@
 {
   "name": "mongo-q",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "kriskowal's Q support for mongodb",
   "author": "Dongsu Jang <iolothebard@gmail.com>",
   "repository": {
