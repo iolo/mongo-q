@@ -93,7 +93,8 @@ var
 // TODO: ADMIN
 // TODO: GRID
 // TODO: GRID_STORE
-  apslice = Array.prototype.slice;
+  apslice = Array.prototype.slice,
+  DEBUG = !!process.env.MONGOQ_DEBUG;
 
 /**
  * @module mongoq
@@ -108,14 +109,15 @@ var
  * @param {*} [spread=false] use spread for multi-results
  */
 function qualify(obj, funcNames, funcNameMapper, spread) {
-  console.log('wrap obj:', obj);
+  DEBUG && console.log('wrap obj:', obj);
   funcNames.forEach(function (funcName) {
     if (typeof(obj[funcName]) !== 'function') {
-      console.warn('***skip*** function not found:', funcName);
+      DEBUG && console.warn('***skip*** function not found:', funcName);
       return;
     }
-    console.log('wrap function:', funcName);
-    obj[funcNameMapper(funcName)] = function () {
+    var mappedFuncName = funcNameMapper(funcName);
+    DEBUG && console.log('wrap function:', funcName, '-->', mappedFuncName);
+    obj[mappedFuncName] = function () {
       var d = Q.defer();
       var args = apslice.call(arguments);
       args.push(function (err, result) {
