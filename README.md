@@ -5,6 +5,9 @@ mongo-q
 
 for [mongoose](http://mongoosejs.com), see [mongoose-q](http://github.com/iolo/mongoose-q).
 
+> WARNING!!!
+> recent mongodb driver(>=1.9.20) is **NOT** fully supported. see issue #1
+
 usage
 -----
 
