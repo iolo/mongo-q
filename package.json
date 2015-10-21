@@ -1,6 +1,6 @@
 {
   "name": "mongo-q",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "kriskowal's Q support for mongodb",
   "author": "Dongsu Jang <iolothebard@gmail.com>",
   "repository": {
@@ -9,7 +9,7 @@
   },
   "license": "MIT",
   "engines": {
-    "node": "~0.10"
+    "node": ">= 0.10"
   },
   "dependencies": {
     "lodash": "~2.2.1",
