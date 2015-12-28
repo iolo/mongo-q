@@ -1,6 +1,8 @@
 mongo-q
 =======
 
+> **DEPRECATED** [ES6 Promise is supported](http://mongodb.github.io/node-mongodb-native/2.0/reference/ecmascript6/) by [official mongodb node.js driver](https://github.com/mongodb/node-mongodb-native/).
+
 [kriskowal's Q](http://documentup.com/kriskowal/q/) support for [mongodb](https://github.com/mongodb/node-mongodb-native/).
 
 for [mongoose](http://mongoosejs.com), see [mongoose-q](http://github.com/iolo/mongoose-q).
